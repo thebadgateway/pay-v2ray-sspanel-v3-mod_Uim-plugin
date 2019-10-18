@@ -108,14 +108,7 @@ error_detect_depends(){
 
 # Pre-installation settings
 pre_install_docker_compose(){
-    echo "Which Panel Do you use SSpanel 0， SSRpanel 1"
-    read -p "(v2ray_paneltype (Default 0):" v2ray_paneltype
-    [ -z "${v2ray_paneltype}" ] && v2ray_paneltype=0
-    echo
-    echo "---------------------------"
-    echo "v2ray_paneltype = ${v2ray_paneltype}"
-    echo "---------------------------"
-    echo
+
     # Set ssrpanel node_id
     echo "sspanel node_id"
     read -p "(Default value: 0 ):" ssrpanel_node_id
@@ -125,57 +118,8 @@ pre_install_docker_compose(){
     echo "ssrpanel_node_id = ${ssrpanel_node_id}"
     echo "---------------------------"
     echo
-     # Set ssrpanel node_id
-    echo "DNS "
-    read -p "(Default value: localhost ):" LDNS
-    [ -z "${LDNS}" ] && LDNS="localhost"
-    echo
-    echo "---------------------------"
-    echo "DNS = ${LDNS}"
-    echo "---------------------------"
-    echo
 
-    # Set caddy cloudflare ddns email
-    echo "cloudflare email for tls (optional)"
-    read -p "(Default rico93@outlxxxxxxxxxx.com):" cloudflare_email
-    [ -z "${cloudflare_email}" ]  && cloudflare_email="rico93@outlxxxxxxxxxx.com"
-    echo
-    echo "---------------------------"
-    echo "cloudflare_email = ${cloudflare_email}"
-    echo "---------------------------"
-    echo
 
-    # Set caddy cloudflare ddns key
-    echo "cloudflare key for tls (optional)"
-    read -p "(Default bbbbbbbbbbbbbbbbbb ):" cloudflare_key
-    [ -z "${cloudflare_key}" ] && cloudflare_key="bbbbbbbbbbbbbbbbbb"
-    echo
-    echo "---------------------------"
-    echo "cloudflare_key = ${cloudflare_key}"
-    echo "---------------------------"
-    echo
-    echo
-
-    echo "Which connection do you prefer 0 for webapi 1 for mysql"
-    read -p "(v2ray_usemysql (Default 0):" v2ray_usemysql
-    [ -z "${v2ray_usemysql}" ] && v2ray_usemysql=0
-    echo
-    echo "---------------------------"
-    echo "v2ray_usemysql = ${v2ray_usemysql}"
-    echo "---------------------------"
-    echo
-
-    if [ "${v2ray_usemysql}" -eq 0 ];
-        then
-      # Set ssrpanel_url
-    echo "Please sspanel_url"
-    read -p "(There is no default value please make sure you input the right thing):" ssrpanel_url
-    [ -z "${ssrpanel_url}" ]
-    echo
-    echo "---------------------------"
-    echo "ssrpanel_url = ${ssrpanel_url}"
-    echo "---------------------------"
-    echo
     # Set ssrpanel key
     echo "sspanel key"
     read -p "(There is no default value please make sure you input the right thing):" ssrpanel_key
@@ -185,85 +129,8 @@ pre_install_docker_compose(){
     echo "ssrpanel_key = ${ssrpanel_key}"
     echo "---------------------------"
     echo
-    else
+  
 
-   # Set Setting if the node go downwith panel
-    echo "Setting Myqlhost"
-    read -p "(v2ray_mysqlhost :" v2ray_mysqlhost
-    [ -z "${v2ray_mysqlhost}" ] && v2ray_mysqlhost=""
-    echo
-    echo "---------------------------"
-    echo "v2ray_mysqlhost = ${v2ray_mysqlhost}"
-    echo "---------------------------"
-    echo
-    # Set Setting if the node go downwith panel
-    echo "Setting MysqlPort"
-    read -p "(v2ray_mysqlport (Default 3306):" v2ray_mysqlport
-    [ -z "${v2ray_mysqlport}" ] && v2ray_mysqlport=3306
-    echo
-    echo "---------------------------"
-    echo "v2ray_mysqlport = ${v2ray_mysqlport}"
-    echo "---------------------------"
-    echo
-    # Set Setting if the node go downwith panel
-    echo "Setting MysqlUser"
-    read -p "(v2ray_myqluser (Default root):" v2ray_myqluser
-    [ -z "${v2ray_myqluser}" ] && v2ray_myqluser="root"
-    echo
-    echo "---------------------------"
-    echo "v2ray_myqluser = ${v2ray_myqluser}"
-    echo "---------------------------"
-    echo
-    # Set Setting if the node go downwith panel
-    echo "Setting MysqlPassword"
-    read -p "(v2ray_mysqlpassword (Default 1):" v2ray_mysqlpassword
-    [ -z "${v2ray_mysqlpassword}" ] && v2ray_mysqlpassword=1
-    echo
-    echo "---------------------------"
-    echo "v2ray_mysqlpassword = ${v2ray_mysqlpassword}"
-    echo "---------------------------"
-    echo
-    # Set Setting if the node go downwith panel
-    echo "Setting MysqlDbname"
-    read -p "(v2ray_mysqldbname (Default 1):" v2ray_mysqldbname
-    [ -z "${v2ray_mysqldbname}" ] && v2ray_mysqldbname=1
-    echo
-    echo "---------------------------"
-    echo "v2ray_mysqldbname = ${v2ray_mysqldbname}"
-    echo "---------------------------"
-    echo
-    fi
-    # Set ssrpanel speedtest function
-    echo "use sspanel speedtest"
-    read -p "(sspanel speedtest: Default (6) hours every time):" ssrpanel_speedtest
-    [ -z "${ssrpanel_speedtest}" ] && ssrpanel_speedtest=6
-    echo
-    echo "---------------------------"
-    echo "ssrpanel_speedtest = ${ssrpanel_speedtest}"
-    echo "---------------------------"
-    echo
-
-    # Set V2ray backend API Listen port
-    echo "Setting V2ray Grpc API Listen port"
-    read -p "(V2ray Grpc API Listen port(Default 2333):" v2ray_api_port
-    [ -z "${v2ray_api_port}" ] && v2ray_api_port=2333
-    echo
-    echo "---------------------------"
-    echo "V2ray Grpc API Listen port = ${v2ray_api_port}"
-    echo "---------------------------"
-    echo
-
-    # Set Setting if the node go downwith panel
-    echo "Setting if the node go downwith panel"
-    read -p "(v2ray_downWithPanel (Default 1):" v2ray_downWithPanel
-    [ -z "${v2ray_downWithPanel}" ] && v2ray_downWithPanel=1
-    echo
-    echo "---------------------------"
-    echo "v2ray_downWithPanel = ${v2ray_downWithPanel}"
-    echo "---------------------------"
-    echo
-
-    # Set Setting if the node go downwith panel
 
 }
 
@@ -280,46 +147,6 @@ pre_install_caddy(){
     echo
 
 
-    # Set caddy v2ray path
-    echo "caddy v2ray path"
-    read -p "(Default path: /v2ray):" v2ray_path
-    [ -z "${v2ray_path}" ] && v2ray_path="/v2ray"
-    echo
-    echo "---------------------------"
-    echo "v2ray_path = ${v2ray_path}"
-    echo "---------------------------"
-    echo
-
-    # Set caddy v2ray tls email
-    echo "caddy v2ray tls email"
-    read -p "(No default ):" v2ray_email
-    [ -z "${v2ray_email}" ]
-    echo
-    echo "---------------------------"
-    echo "v2ray_email = ${v2ray_email}"
-    echo "---------------------------"
-    echo
-
-    # Set Caddy v2ray listen port
-    echo "caddy v2ray local listen port"
-    read -p "(Default port: 10550):" v2ray_local_port
-    [ -z "${v2ray_local_port}" ] && v2ray_local_port=10550
-    echo
-    echo "---------------------------"
-    echo "v2ray_local_port = ${v2ray_local_port}"
-    echo "---------------------------"
-    echo
-
-    # Set Caddy  listen port
-    echo "caddy listen port"
-    read -p "(Default port: 443):" caddy_listen_port
-    [ -z "${caddy_listen_port}" ] && caddy_listen_port=443
-    echo
-    echo "---------------------------"
-    echo "caddy_listen_port = ${caddy_listen_port}"
-    echo "---------------------------"
-    echo
-
 
 }
 
@@ -333,21 +160,21 @@ config_docker(){
     echo "Writing docker-compose.yml"
     curl -L https://raw.githubusercontent.com/v2rayv3/pay-v2ray-sspanel-v3-mod_Uim-plugin/master/Docker/V2ray/docker-compose.yml > docker-compose.yml
     sed -i "s|node_id:.*|node_id: ${ssrpanel_node_id}|"  ./docker-compose.yml
-    sed -i "s|sspanel_url:.*|sspanel_url: '${ssrpanel_url}'|"  ./docker-compose.yml
-    sed -i "s|LDNS:.*|LDNS: '${LDNS}'|"  ./docker-compose.yml
+    sed -i "s|sspanel_url:.*|sspanel_url: 'https://vpnm.org'|"  ./docker-compose.yml
+    sed -i "s|LDNS:.*|LDNS: '8.8.8.8'|"  ./docker-compose.yml
     sed -i "s|key:.*|key: '${ssrpanel_key}'|"  ./docker-compose.yml
-    sed -i "s|speedtest:.*|speedtest: ${ssrpanel_speedtest}|"  ./docker-compose.yml
-    sed -i "s|api_port:.*|api_port: ${v2ray_api_port}|" ./docker-compose.yml
-    sed -i "s|downWithPanel:.*|downWithPanel: ${v2ray_downWithPanel}|" ./docker-compose.yml
-    sed -i "s|usemysql:.*|usemysql: ${v2ray_usemysql}|" ./docker-compose.yml
-    sed -i "s|PANELTYPE:.*|PANELTYPE: ${v2ray_paneltype}|" ./docker-compose.yml
-    sed -i "s|MYSQLHOST:.*|MYSQLHOST: ${v2ray_mysqlhost}|" ./docker-compose.yml
-    sed -i "s|MYSQLPORT:.*|MYSQLPORT: ${v2ray_mysqlport}|" ./docker-compose.yml
-    sed -i "s|MYSQLUSR:.*|MYSQLUSR: ${v2ray_myqluser}|" ./docker-compose.yml
-    sed -i "s|MYSQLPASSWD:.*|MYSQLPASSWD: ${v2ray_mysqlpassword}|" ./docker-compose.yml
-    sed -i "s|MYSQLDBNAME:.*|MYSQLDBNAME: ${v2ray_mysqldbname}|" ./docker-compose.yml
-    sed -i "s|CF_Key:.*|CF_Key: ${cloudflare_key}|" ./docker-compose.yml
-    sed -i "s|CF_Email:.*|CF_Email: ${cloudflare_email}|" ./docker-compose.yml
+    sed -i "s|speedtest:.*|speedtest: 0|"  ./docker-compose.yml
+    sed -i "s|api_port:.*|api_port: 2333|" ./docker-compose.yml
+    sed -i "s|downWithPanel:.*|downWithPanel: 1|" ./docker-compose.yml
+    sed -i "s|usemysql:.*|usemysql: |" ./docker-compose.yml
+    sed -i "s|PANELTYPE:.*|PANELTYPE: 0|" ./docker-compose.yml
+    sed -i "s|MYSQLHOST:.*|MYSQLHOST: |" ./docker-compose.yml
+    sed -i "s|MYSQLPORT:.*|MYSQLPORT: |" ./docker-compose.yml
+    sed -i "s|MYSQLUSR:.*|MYSQLUSR: |" ./docker-compose.yml
+    sed -i "s|MYSQLPASSWD:.*|MYSQLPASSWD: |" ./docker-compose.yml
+    sed -i "s|MYSQLDBNAME:.*|MYSQLDBNAME: |" ./docker-compose.yml
+    sed -i "s|CF_Key:.*|CF_Key: |" ./docker-compose.yml
+    sed -i "s|CF_Email:.*|CF_Email: |" ./docker-compose.yml
 }
 
 
@@ -362,26 +189,26 @@ config_caddy_docker(){
     echo "Writing docker-compose.yml"
     curl -L https://raw.githubusercontent.com/v2rayv3/pay-v2ray-sspanel-v3-mod_Uim-plugin/master/Docker/Caddy_V2ray/docker-compose.yml > docker-compose.yml
     sed -i "s|node_id:.*|node_id: ${ssrpanel_node_id}|"  ./docker-compose.yml
-    sed -i "s|LDNS:.*|LDNS: '${LDNS}'|"  ./docker-compose.yml
-    sed -i "s|sspanel_url:.*|sspanel_url: '${ssrpanel_url}'|"  ./docker-compose.yml
+    sed -i "s|sspanel_url:.*|sspanel_url: 'https://vpnm.org'|"  ./docker-compose.yml
+    sed -i "s|LDNS:.*|LDNS: '8.8.8.8'|"  ./docker-compose.yml
     sed -i "s|key:.*|key: '${ssrpanel_key}'|"  ./docker-compose.yml
-    sed -i "s|speedtest:.*|speedtest: ${ssrpanel_speedtest}|"  ./docker-compose.yml
-    sed -i "s|api_port:.*|api_port: ${v2ray_api_port}|" ./docker-compose.yml
-    sed -i "s|downWithPanel:.*|downWithPanel: ${v2ray_downWithPanel}|" ./docker-compose.yml
-    sed -i "s|usemysql:.*|usemysql: ${v2ray_usemysql}|" ./docker-compose.yml
-    sed -i "s|PANELTYPE:.*|PANELTYPE: ${v2ray_paneltype}|" ./docker-compose.yml
-    sed -i "s|MYSQLHOST:.*|MYSQLHOST: ${v2ray_mysqlhost}|" ./docker-compose.yml
-    sed -i "s|MYSQLPORT:.*|MYSQLPORT: ${v2ray_mysqlport}|" ./docker-compose.yml
-    sed -i "s|MYSQLUSR:.*|MYSQLUSR: ${v2ray_myqluser}|" ./docker-compose.yml
-    sed -i "s|MYSQLPASSWD:.*|MYSQLPASSWD: ${v2ray_mysqlpassword}|" ./docker-compose.yml
-    sed -i "s|MYSQLDBNAME:.*|MYSQLDBNAME: ${v2ray_mysqldbname}|" ./docker-compose.yml
-    sed -i "s|CF_Key:.*|CF_Key: ${cloudflare_key}|" ./docker-compose.yml
-    sed -i "s|CF_Email:.*|CF_Email: ${cloudflare_email}|" ./docker-compose.yml
+    sed -i "s|speedtest:.*|speedtest: 0|"  ./docker-compose.yml
+    sed -i "s|api_port:.*|api_port: 2333|" ./docker-compose.yml
+    sed -i "s|downWithPanel:.*|downWithPanel: 1|" ./docker-compose.yml
+    sed -i "s|usemysql:.*|usemysql: |" ./docker-compose.yml
+    sed -i "s|PANELTYPE:.*|PANELTYPE: 0|" ./docker-compose.yml
+    sed -i "s|MYSQLHOST:.*|MYSQLHOST: |" ./docker-compose.yml
+    sed -i "s|MYSQLPORT:.*|MYSQLPORT: |" ./docker-compose.yml
+    sed -i "s|MYSQLUSR:.*|MYSQLUSR: |" ./docker-compose.yml
+    sed -i "s|MYSQLPASSWD:.*|MYSQLPASSWD: |" ./docker-compose.yml
+    sed -i "s|MYSQLDBNAME:.*|MYSQLDBNAME: |" ./docker-compose.yml
+    sed -i "s|CF_Key:.*|CF_Key: |" ./docker-compose.yml
+    sed -i "s|CF_Email:.*|CF_Email: |" ./docker-compose.yml
     sed -i "s|V2RAY_DOMAIN=xxxx.com|V2RAY_DOMAIN=${v2ray_domain}|"  ./docker-compose.yml
-    sed -i "s|V2RAY_PATH=/v2ray|V2RAY_PATH=${v2ray_path}|"  ./docker-compose.yml
-    sed -i "s|V2RAY_EMAIL=xxxx@outlook.com|V2RAY_EMAIL=${v2ray_email}|"  ./docker-compose.yml
-    sed -i "s|V2RAY_PORT=10550|V2RAY_PORT=${v2ray_local_port}|"  ./docker-compose.yml
-    sed -i "s|V2RAY_OUTSIDE_PORT=443|V2RAY_OUTSIDE_PORT=${caddy_listen_port}|"  ./docker-compose.yml
+    sed -i "s|V2RAY_PATH=/v2ray|V2RAY_PATH=/vvvv2|"  ./docker-compose.yml
+    sed -i "s|V2RAY_EMAIL=xxxx@outlook.com|V2RAY_EMAIL=admin@vpnm.ru|"  ./docker-compose.yml
+    sed -i "s|V2RAY_PORT=10550|V2RAY_PORT=10550|"  ./docker-compose.yml
+    sed -i "s|V2RAY_OUTSIDE_PORT=443|V2RAY_OUTSIDE_PORT=443|"  ./docker-compose.yml
 }
 
 # Config caddy_docker
