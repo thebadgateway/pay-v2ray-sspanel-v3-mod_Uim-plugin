@@ -1,3 +1,4 @@
+```
 // TCP example
 Non-CDN domain name or ip; non-zero; 2; tcp
 
@@ -63,3 +64,4 @@ Non-CDN domain name or ip; non-zero; 2; kcp; dtls
 
 // wireguard: Disguised as a WireGuard packet (not a true WireGuard protocol).
 Non-CDN domain name or ip; non-zero; 2; kcp; wireguard
+```
