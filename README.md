@@ -1,40 +1,65 @@
-# pay-v2ray-sspanel-v3-mod_Uim-plugin
+// TCP example
+Non-CDN domain name or ip; non-zero; 2; tcp
 
-# 收费版本
+// TCP + TLS example
+Non-CDN domain name or ip; non-zero; 2; tcp; tls
 
-# 使用教程请看 [WIKI](https://github.com/rico93/pay-v2ray-sspanel-v3-mod_Uim-plugin/wiki/)
-## 特别优惠
-Malio SSPANEL主题 + V2Ray后端，原价1000，现在只需899（V2ray 是按年订阅），👉[查看详情](https://malio.fxxkmy.life/)
+// WS
+Non-CDN domain name or ip; 8080; 2; ws;; path=/v2ray|host=You can use the domain name with CDN added here.
 
-## 公告
+// WS + CDN
+Non-CDN domain name or ip; 8080; 2; ws;; path = / v2ray | server = here with the domain name added CDN | host = here with the domain name added CDN
 
-1. 限速功能完成，是收费版本(不在提供源码，只提供二进制文件，需要联系使用[bot购买](https://t.me/Rico_V2_bot))
-2. 完成胖虎 SSRPanel 和 SSpanel MySQL 连接的适配
-3. 自动tls完成，用dns api
-
-## Thanks
-
-1. 感恩的 [ColetteContreras's repo](https://github.com/ColetteContreras/v2ray-ssrpanel-plugin). 让我一个 Go 小白有了下手地。主要起始框架来源于这里
-2. 感恩 [eycorsican](https://github.com/eycorsican) 在 v2ray-core [issue](https://github.com/v2ray/v2ray-core/issues/1514), 促成了 Go 版本提上日程
-
-## 使用重点
+// WS + TLS (automatic configuration)
+Non-CDN and TLS domain name or ip; non-zero; 2; tls; ws; path=/v2ray|host=non-CDN and TLS domain name|inside_port=10550
 
 
-## 项目状态
+// WS + TLS (automatic configuration) + CDN
+Non-CDN domain name or ip; non-zero; 2; tls; ws; path = / v2ray | host = here with the domain name added CDN | inside_port = 10550 | server = here with the domain name plus CDN
 
-支持 [ss-panel-v3-mod_Uim](https://github.com/NimaQu/ss-panel-v3-mod_Uim)，使用 WEBAPI 或 数据库连接。
+// WS + TLS (provided by Caddy)
+Non-CDN domain name or ip;0;2;tls;ws;path=/v2ray|host=non-CDN and TLS domain name|inside_port=10550|outside_port=443
 
-亦支持 [SSRPanel](https://github.com/ssrpanel/SSRPanel)，使用数据库连接。
+// WS + TLS (provided by Caddy) + CDN
+Non-CDN domain name or ip; 0; 2; tls; ws; path = / v2ray | host = here with the domain name added CDN | inside_port = 10550 | outside_port = 443 | server = here with the domain name plus CDN
 
-**作为 ss-panel-v3-mod 后端目前支持：**
-- mysql数据库连接ssrpanel 和sspanel
-- ss+ws 单端口
-- 限速
-- 流量记录
-- 在线人数
-- 节点负载
-- 流量中转
-- 在线 IP 上报
-- 服务器是否在线
-- 后端根据前端的设定自动调用 API 增加用户。
 
+// nat🐔 ws
+Non-CDN domain name or ip; non-zero; 2; ws;; path=/v2ray|host=You can use the domain name with CDN added here.
+
+// nat🐔 ws + tls (automatic configuration), because some merchants do not provide 80 & 443 access, so please consider manually requesting an SSL certificate
+Non-CDN domain name or ip; non-zero; 2; tls; ws; path = / v2ray | host = tls domain name
+
+
+// nat🐔 ws + tls (automatic configuration) + CDN, because some merchants do not provide 80 & 443 access, so please consider manually applying for SSL certificate
+Non-CDN domain name or ip; non-zero; 2; tls; ws; path = / v2ray | host = here with the domain name added CDN | server = here with the domain name plus CDN
+
+
+// nat🐔 ws + tls (provided by Caddy), as some merchants do not provide 80 & 443 access, so please consider manually requesting an SSL certificate.
+Non-CDN domain name or ip;0;2;tls;ws;path=/v2ray|host=tls domain name|inside_port=10550|outside_port=11120
+
+
+
+// nat🐔 ws + tls (provided by Caddy) + CDN, because some merchants do not provide 80 & 443 access, so please consider applying for SSL certificate manually.
+Non-CDN domain name or ip; 0; 2; tls; ws; path = / v2ray | host = here with the domain name added CDN | inside_port = 10550 | outside_port = 11120 | server = here with the domain name added CDN
+
+
+// The following is a KCP sample section that supports all V2Ray types:
+
+// none: The default value, no masquerading, the data sent is a packet with no features.
+Non-CDN domain name or ip; non-zero; 2; kcp; noop
+
+// srtp: Disguised as an SRTP packet, it is recognized as video call data (such as FaceTime).
+Non-CDN domain name or ip; non-zero; 2; kcp; srtp
+
+// utp: Disguised as a uTP packet, it will be recognized as BT download data.
+Non-CDN domain name or ip; non-zero; 2; kcp; utp
+
+// wechat-video: A packet masquerading as a WeChat video call.
+Non-CDN domain name or ip; non-zero; 2; kcp; wechat-video
+
+// dtls: Disguised as a DTLS 1.2 packet.
+Non-CDN domain name or ip; non-zero; 2; kcp; dtls
+
+// wireguard: Disguised as a WireGuard packet (not a true WireGuard protocol).
+Non-CDN domain name or ip; non-zero; 2; kcp; wireguard
